@@ -5,7 +5,7 @@ buffer_size = 10
 def test_create_ringbuffer():
     #given an instantiated buffer
     rb = Ringbuffer(buffer_size)
-    #when 
+    #when NOTHING 
 
     #then the number of elements is zero
     assert rb.get_number_of_elements() == 0
@@ -68,7 +68,7 @@ def test_it_should_return_the_before_pushed_values_full_test():
     for i in range(10):
         rb.add(i)
     #when removing element by element
-    for i in range(9, -1, -1):
+    for i in range(10):
         ret = rb.remove()
         #then the elements get returned in inverse order
         assert ret == i
@@ -93,6 +93,6 @@ def test_it_should_overwrite_the_last_element_when_buffer_is_full():
     #when adding another element
     rb.add(10)
     #all other elements get returned in reverse order
-    for i in range (9, -1 , -1):
+    for i in range (10, 0):
         assert i == rb.remove() 
 
