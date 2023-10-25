@@ -63,29 +63,29 @@ def test_it_should_return_the_before_pushed_values():
     assert ret == 2  
 
 def test_it_should_return_the_before_pushed_values_full_test():
-    #TEST IS NOT WOTRKING! NO IDEA WHY!!
     #given a fully filled buffer
     rb = Ringbuffer(buffer_size)
     for i in range(10):
         rb.add(i)
     #when removing element by element
-    for i in range(10,0):
+    for i in range(9, -1, -1):
         ret = rb.remove()
         #then the elements get returned in inverse order
-        assert ret == i*2  
+        assert ret == i
 
-def test_it_should_return_false_when_empty():
-    #TEST IS NOT WOTRKING! NO IDEA WHY!!
+def test_it_should_return_None_when_empty():
+    #TEST IS NOT WORKING! 
+    #ChatGPT says, None is magically returned by default. 
+    #So this test does not work and is always passed even when the function only has the pass statement!
+
     #given an empty buffer
     rb = Ringbuffer(buffer_size)
     #when removing an element
-    ret = int(32)
     ret = rb.remove()
-    #None gets returned
+    #None gets returned. 
     assert ret is None
     
 def test_it_should_overwrite_the_last_element_when_buffer_is_full():
-    #TEST IS NOT WOTRKING! NO IDEA WHY!!
     #given a fully filled buffer    
     rb = Ringbuffer(buffer_size)
     for i in range(10):
@@ -93,6 +93,6 @@ def test_it_should_overwrite_the_last_element_when_buffer_is_full():
     #when adding another element
     rb.add(10)
     #all other elements get returned in reverse order
-    for i in range (11,1):
+    for i in range (9, -1 , -1):
         assert i == rb.remove() 
 
