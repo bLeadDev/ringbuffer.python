@@ -71,7 +71,6 @@ def test_it_should_return_the_before_pushed_values_full_test():
     #when removing element by element
     for i in range(10,0):
         ret = rb.remove()
-        print(f"{ret}")
         #then the elements get returned in inverse order
         assert ret == i*2  
 
